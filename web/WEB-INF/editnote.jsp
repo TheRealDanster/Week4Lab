@@ -9,9 +9,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Note Editor</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <form method="post" action="hello">
+            <h1>Simple Not Keeper</h1>
+            <h2>View Note</h2>
+            Title:<input type="text" value="${title}">
+            <br><br>
+            Contents:<br><input type="text" value="${content}">
+            <br><br>
+            <button>Save</button>
+        </form>
     </body>
 </html>
