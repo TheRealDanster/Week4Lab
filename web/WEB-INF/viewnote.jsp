@@ -12,11 +12,11 @@
         <title>Note Viewer</title>
     </head>
     <body>
-        <h1>Simple Not Keeper</h1>
+        <h1>Simple Note Keeper</h1>
         <h2>View Note</h2>
-        Title: ${title}
+        Title: ${note.getTitle()}
         <br><br>
-        Contents:<br>${content}
+        Contents:<br>${note.getContent()}
         <br><br>
         <a href="note?edit">Edit</a>
     </body>

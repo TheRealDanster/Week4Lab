@@ -12,12 +12,12 @@
         <title>Note Editor</title>
     </head>
     <body>
-        <form method="post" action="hello">
+        <form method="post" action="note">
             <h1>Simple Not Keeper</h1>
             <h2>View Note</h2>
-            Title:<input type="text" value="${title}">
+            Title:<input type="text" name="title" value="${note.getTitle()}">
             <br><br>
-            Contents:<br><input type="text" value="${content}">
+            Contents:<br><input type="text" name="content" value="${note.getContent()}">
             <br><br>
             <button>Save</button>
         </form>
