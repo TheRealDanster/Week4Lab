@@ -20,15 +20,16 @@ import models.Note;
  */
 public class NoteServlet extends HttpServlet {
 
+    Note note = new Note();
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = getServletContext().getRealPath("/WEB-INF/note.txt");
-        BufferedReader br = new BufferedReader(new FileReader(new File(path)));
+	BufferedReader br = new BufferedReader(new FileReader(new File(path)));
         
-        Note note = new Note();
-        
-        note.setTitle(br.readLine());
-        note.setContent(br.readLine());
+        this.note.setTitle(br.readLine());
+        this.note.setContent(br.readLine());
+	br.close();
 
         request.setAttribute("note", note);
         
@@ -37,8 +38,6 @@ public class NoteServlet extends HttpServlet {
         } else {
          getServletContext().getRequestDispatcher("/WEB-INF/viewnote.jsp").forward(request, response);   
         }
-        
-        br.close();
     }
 
     @Override
@@ -46,19 +45,14 @@ public class NoteServlet extends HttpServlet {
         String path = getServletContext().getRealPath("/WEB-INF/note.txt");
         PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(path, false)));
 
-        String title = request.getParameter("title");
-        String content = request.getParameter("content");
-        
-        Note note = new Note();
-        note.setTitle(title);
-        note.setContent(content);
-        
-        pw.println(title);
-        pw.println(content);
+        this.note.setTitle(request.getParameter("title"));
+        this.note.setContent(request.getParameter("content"));
+       
+        pw.println(this.note.getTitle());
+        pw.println(this.note.getContent());
         pw.close();
         
         request.setAttribute("note", note);
-        
         getServletContext().getRequestDispatcher("/WEB-INF/viewnote.jsp").forward(request, response);
     }
 }

@@ -17,7 +17,8 @@
             <h2>View Note</h2>
             Title:<input type="text" name="title" value="${note.getTitle()}">
             <br><br>
-            Contents:<br><input type="text" name="content" value="${note.getContent()}">
+            Contents:<br>
+            <textarea name="content">${note.getContent()}</textarea>
             <br><br>
             <button>Save</button>
         </form>
